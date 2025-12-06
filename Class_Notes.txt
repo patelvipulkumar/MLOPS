@@ -736,4 +736,338 @@ Next :::
 		- Install Python on Local Machine 
 		
 				
+			
 				
+				
+	
+####################
+Day3: 6th Dec. 2025
+####################
+
+	git 
+	
+	github 
+	
+	docker 
+	
+	dockerhub
+	
+	DVC 
+	
+	MLFLow 
+	
+	Kubernetes 
+	
+	KubeFLow 
+	
+	Prometheus 
+	
+
+	- git ignore :::
+	
+		- Is used ignore the files from tracking.
+		- .gitignore is a hidden file, used to maintain the file names/patterns to ignore from tracking.
+		- As a best practise, .gitignore should be the very first commit in any repository.
+		
+		
+		
+	Project_Workspace :		==> Push 
+	
+		- src 
+			- *.py
+			
+		- test 
+		
+		- config_file
+		
+		- req.txt
+		
+		- app.prop 
+		
+		- db_credentials.json
+		
+		- Secret
+		
+		
+	
+	git log ::::
+	
+		git log 
+		
+		git log --oneline
+		
+	Undo the Commited Changes :::
+	
+	Undo/Revert the Committed Changes from Local Repository :::
+
+	git reset :::
+	
+		git reset is used to undo the changes from the repository
+		git reset will reset the commit point to the previous commit point 
+		git reset will not create any new commit point for track purpose 
+		git reset is not recommended in the shared repository 
+	
+		Syntax :		
+			- git reset <reset_option> <previous_Commit_ID>
+			
+		Reset Options ::
+		
+			git reset --soft <previous_Commit_ID> :::
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will take the changes back to staging area 
+				- The Changes will be available in staging area and working directory					
+		
+			git reset --mixed <previous_Commit_ID> :::		# Default
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will take the changes back to working directory 
+				- The Changes will be available only in working directory			
+			
+			git reset --hard  <previous_Commit_ID> :::
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will permanently delete the files from the system 
+			
+		
+	ML Projects ::::
+	
+		Dataset  Source :
+		
+		
+		ETL Process ::: 
+		
+			Extract 		==> 	for 30 mins  --> Raw Data ==> commited to a repository
+			
+			Transform 		==> 	Application Program to Process Data 	
+			
+			Load 			==> 	Saved to a Database 
+			
+							==>		Reset --hard pointing to initial commit (.gitignore)
+							
+	
+	Git Revert :::
+	
+	git revert :::
+	
+		- Git Revert is same as git reset --hard option 		
+		- git revert is used to undo a specific commit 		
+		- git revert will create a new commit point for tracking purpose.		
+		- git revert will maintain the commit history		
+		- git revert is recommended in shared repositories
+		
+		Syntax ::
+			git revert <specific_Commit_ID>		
+			
+	
+	GIT Commit :::
+	
+	 - git commit 					# To Commit the changes from staging area to local repository	
+
+
+			git commit -m "<Valid Commit_Message>"
+			
+			As a best practise :
+			
+			git commit -m "CR1001 - Message"
+		
+			git commit -m "REL-0126 - Payment Module updated"
+							
+							
+	Git Branches ::::
+	
+		-> Git Branches are the logical copy of the Repository/Default Branch 
+		
+		-> Used to perform parallel development 
+		
+	
+	Git Branching Strategies :::
+	
+		-> default branch - (master/main) ==> Used to maintain the production version of source.
+		
+		-> Git Branching Strategeies are used to maintain the integrity of the main/master Branch(Prod version)
+	
+	
+	Repo1 :::
+	
+		master : cm1,cm2,c3 
+		
+			feature1_branch : cm1,cm2,c3
+								cm1,cm2,c3,f1cm1,f1cm2,f1cm3,...................
+	
+	
+	
+	Scenario 1:
+	
+		Repo1 :::
+	
+			master : cm1,cm2,c3 			
+						cm1,cm2,c3,cm4 						# 'cm4' is the changes merged from feature1_branch
+			
+				feature1_branch : cm1,cm2,c3
+									cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+							
+	
+	Scenario 2:
+	
+		Repo1 :::
+	
+			master : cm1,cm2,c3
+						cm1,cm2,c3,cm4 						# 'cm4' is the changes merged from Developer_Branch
+
+				Developer_Branch : cm1,cm2,c3 
+									cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+					feature1_branch : cm1,cm2,c3
+										cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+					
+					feature2_branch : cm1,cm2,c3
+										cm1,cm2,c3,f2cm1,f2cm2,f2cm3
+
+	Scenario 3:
+	
+		Repo1 :::
+	
+			master : cm1,cm2,c3
+						cm1,cm2,c3,cm4 						# 'cm4' is the changes merged from Integration_Branch
+
+				Integration_Branch : cm1,cm2,c3
+										cm1,cm2,c3,Developer1_Changes,Developer2_Changes					
+				
+					Developer1_Branch : cm1,cm2,c3 
+										cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+					
+						feature1_branch : cm1,cm2,c3
+											cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+						
+						feature2_branch : cm1,cm2,c3
+											cm1,cm2,c3,f2cm1,f2cm2,f2cm3			
+
+					Developer2_Branch : cm1,cm2,c3 
+										cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+					
+						feature1_branch : cm1,cm2,c3
+											cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+						
+						feature2_branch : cm1,cm2,c3
+											cm1,cm2,c3,f2cm1,f2cm2,f2cm3	
+		
+		
+	Scenario 4:
+	
+		Repo1 :::
+	
+			master : cm1,cm2,c3
+						cm1,cm2,c3,cm4 						# 'cm4' is the changes merged from Release_Branch
+				
+				Release_Branch : cm1,cm2,c3
+									cm1,cm2,c3,Team1_Changes,Team2_Changes
+					
+						
+					Integration_Branch1 : cm1,cm2,c3														Team-1
+											cm1,cm2,c3,Developer1_Changes,Developer2_Changes					
+					
+						Developer1_Branch : cm1,cm2,c3 
+											cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+						
+							feature1_branch : cm1,cm2,c3
+												cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+							
+							feature2_branch : cm1,cm2,c3
+												cm1,cm2,c3,f2cm1,f2cm2,f2cm3			
+
+						Developer2_Branch : cm1,cm2,c3 
+											cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+						
+							feature1_branch : cm1,cm2,c3
+												cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+							
+							feature2_branch : cm1,cm2,c3
+												cm1,cm2,c3,f2cm1,f2cm2,f2cm3	
+			
+
+					Integration_Branch2 : cm1,cm2,c3														Team-2
+											cm1,cm2,c3,Developer1_Changes,Developer2_Changes					
+					
+						Developer1_Branch : cm1,cm2,c3 
+											cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+						
+							feature1_branch : cm1,cm2,c3
+												cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+							
+							feature2_branch : cm1,cm2,c3
+												cm1,cm2,c3,f2cm1,f2cm2,f2cm3			
+
+						Developer2_Branch : cm1,cm2,c3 
+											cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+						
+							feature1_branch : cm1,cm2,c3
+												cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+							
+							feature2_branch : cm1,cm2,c3
+												cm1,cm2,c3,f2cm1,f2cm2,f2cm3	
+			
+			
+
+	- Adhoc Requirements :::
+	
+		- Wotking with Hot-fix Branch :::
+		
+		
+				Repo :
+				
+						master : cm1,cm2,cm3
+						
+									cm1,cm2,cm3,cm3.1			# 'cm3.1' is the changes merged from Hot-fix_Branch
+							
+								Hot-fix_Branch : cm1,cm2,cm3,hfcm1,hfcm2,hfcm3						
+							
+									Developer_Branch : cm1,cm2,c3 
+														cm1,cm2,c3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+									
+										feature1_branch : cm1,cm2,c3
+															cm1,cm2,c3,f1cm1,f1cm2,f1cm3
+										
+										feature2_branch : cm1,cm2,c3
+															cm1,cm2,c3,f2cm1,f2cm2,f2cm3		
+			
+			
+			
+	
+	Working with Branch ::::
+	
+		Create Branch :
+		
+			git branch				# List the Branches 
+			
+			git branch feature1		# Create a branch 
+			
+			git switch -c feature1	# Create a branch and switch to new branch
+			
+			git switch feature1		# To Switch to a specific branch
+			
+			
+			Repo:
+			
+				master : cm1 
+				
+					feature1 : cm1 
+	
+								cm1,f1cm1
+								
+								git switch master 				
+								
+								
+								git merge feature1			# Should executed from the target branch
+					
+					
+					feature2
+					
+					
+					
+					feature3
+			
+			
+
+		
+		
+Next ::::
+
+		Handle the Conflicts		
